@@ -261,4 +261,26 @@ public class planetsModScript : MonoBehaviour {
 		renderScreen();
 		GetComponent<KMBombModule>().HandleStrike();
 	}
+
+
+
+	private string TwitchHelpMessage = @"Submit your answer with “!{0} press 1 2 3 4 space”.";
+  private IEnumerator ProcessTwitchCommand(string command) {
+    var pieces = command.ToLowerInvariant().Split(new[] { ' ' }, 2, StringSplitOptions.RemoveEmptyEntries);
+    if (pieces.Length < 2 || (pieces[0] != "submit" && pieces[0] != "press"))
+      yield break;
+		for(int i=0;i<pieces.Length) {
+			
+		}
+    var buttons = GetComponent<KMSelectable>().Children;
+    var buttonLabels = string.Join("", buttons.Select(button => button.GetComponentInChildren<TextMesh>().text.ToLower()).ToArray());
+    var buttonIndexes = pieces[1].Where(x => !char.IsWhiteSpace(x)).Select(x => buttonLabels.IndexOf(x)).ToList();
+    if (buttonIndexes.Any(x => x < 0))
+      yield break;
+    yield return null;
+    foreach (int ix in buttonIndexes) {
+      buttons[ix].OnInteract();
+      yield return new WaitForSeconds(.1f);
+    }
+  }
 }
