@@ -269,24 +269,19 @@ public class planetsModScript : MonoBehaviour {
     var pieces = command.ToLowerInvariant().Split(new[] { ' ' }, 2, StringSplitOptions.RemoveEmptyEntries);
     if (pieces.Length < 2 || (pieces[0] != "submit" && pieces[0] != "press"))
       yield break;
-		GameObject[] buttons;
 		for(int i=1;i<pieces.Length;i++) {
-			if(pieces[i]=="0") buttons.add(button0);
-			if(pieces[i]=="1") buttons.add(button1);
-			if(pieces[i]=="2") buttons.add(button2);
-			if(pieces[i]=="3") buttons.add(button3);
-			if(pieces[i]=="4") buttons.add(button4);
-			if(pieces[i]=="5") buttons.add(button5);
-			if(pieces[i]=="6") buttons.add(button6);
-			if(pieces[i]=="7") buttons.add(button7);
-			if(pieces[i]=="8") buttons.add(button8);
-			if(pieces[i]=="9") buttons.add(button9);
-			if(pieces[i]=="delete") buttons.add(buttonBackspace);
-			if(pieces[i]=="space") buttons.add(buttonToSpace);
+			if(pieces[i]=="0") button0.OnInteract();yield return new WaitForSeconds(.1f);
+			if(pieces[i]=="1") button1.OnInteract();yield return new WaitForSeconds(.1f);
+			if(pieces[i]=="2") button2.OnInteract();yield return new WaitForSeconds(.1f);
+			if(pieces[i]=="3") button3.OnInteract();yield return new WaitForSeconds(.1f);
+			if(pieces[i]=="4") button4.OnInteract();yield return new WaitForSeconds(.1f);
+			if(pieces[i]=="5") button5.OnInteract();yield return new WaitForSeconds(.1f);
+			if(pieces[i]=="6") button6.OnInteract();yield return new WaitForSeconds(.1f);
+			if(pieces[i]=="7") button7.OnInteract();yield return new WaitForSeconds(.1f);
+			if(pieces[i]=="8") button8.OnInteract();yield return new WaitForSeconds(.1f);
+			if(pieces[i]=="9") button9.OnInteract();yield return new WaitForSeconds(.1f);
+			if(pieces[i]=="delete") buttonBackspace.OnInteract();yield return new WaitForSeconds(.1f);
+			if(pieces[i]=="space") buttonToSpace.OnInteract();yield return new WaitForSeconds(.1f);
 		}
-    foreach (int ix in buttonIndexes) {
-      buttons[ix].OnInteract();
-      yield return new WaitForSeconds(.1f);
-    }
   }
 }
