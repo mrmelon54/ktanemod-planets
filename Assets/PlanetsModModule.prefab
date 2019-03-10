@@ -4418,7 +4418,7 @@ GameObject:
   - component: {fileID: 114552120536617164}
   - component: {fileID: 114267992943992864}
   - component: {fileID: 114501452920504154}
-  - component: {fileID: 114324138635850430}
+  - component: {fileID: 114734303563771194}
   m_Layer: 0
   m_Name: PlanetsModModule
   m_TagString: Untagged
@@ -16924,49 +16924,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShaderNames:
   - KT/Blend Unlit
---- !u!114 &114324138635850430
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1980496988126644}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60745447d07441143b1873525c8c518a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audio: {fileID: 114936541366020078}
-  bomb: {fileID: 114552120536617164}
-  button1: {fileID: 114892724839075178}
-  button2: {fileID: 114051651864233602}
-  button3: {fileID: 114820839306651402}
-  button4: {fileID: 114964869684647888}
-  button5: {fileID: 114407903111312534}
-  button6: {fileID: 114566136514262258}
-  button7: {fileID: 114381752516861814}
-  button8: {fileID: 114015996552473910}
-  button9: {fileID: 114475886439390046}
-  button0: {fileID: 114417991934319354}
-  buttonBackspace: {fileID: 114851572006932424}
-  buttonToSpace: {fileID: 114798057143941048}
-  screenText: {fileID: 102600915856876138}
-  planetModels:
-  - {fileID: 1003698507249454}
-  - {fileID: 1890283387749282}
-  - {fileID: 1265389292980858}
-  - {fileID: 1098366818795872}
-  - {fileID: 1595824882270562}
-  - {fileID: 1679225089768340}
-  - {fileID: 1649182376866604}
-  - {fileID: 1995768595225264}
-  planetIcon: {fileID: 1196477180332236}
-  stripLights:
-  - {fileID: 1847524050459128}
-  - {fileID: 1623502433637448}
-  - {fileID: 1675176071149148}
-  - {fileID: 1566671691133634}
-  - {fileID: 1362227135615546}
-  stripColours: 0000000000000000000000000000000000000000
 --- !u!114 &114345531451861850
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -18084,6 +18041,49 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShaderNames:
   - Standard
+--- !u!114 &114734303563771194
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1980496988126644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a494008d519fdea4694a609850e770bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audio: {fileID: 114936541366020078}
+  bomb: {fileID: 114552120536617164}
+  button1: {fileID: 114892724839075178}
+  button2: {fileID: 114051651864233602}
+  button3: {fileID: 114820839306651402}
+  button4: {fileID: 114964869684647888}
+  button5: {fileID: 114407903111312534}
+  button6: {fileID: 114566136514262258}
+  button7: {fileID: 114381752516861814}
+  button8: {fileID: 114015996552473910}
+  button9: {fileID: 114475886439390046}
+  button0: {fileID: 114417991934319354}
+  buttonBackspace: {fileID: 114851572006932424}
+  buttonToSpace: {fileID: 114798057143941048}
+  screenText: {fileID: 102600915856876138}
+  planetModels:
+  - {fileID: 1003698507249454}
+  - {fileID: 1890283387749282}
+  - {fileID: 1265389292980858}
+  - {fileID: 1098366818795872}
+  - {fileID: 1595824882270562}
+  - {fileID: 1679225089768340}
+  - {fileID: 1649182376866604}
+  - {fileID: 1995768595225264}
+  planetIcon: {fileID: 1196477180332236}
+  stripLights:
+  - {fileID: 1847524050459128}
+  - {fileID: 1623502433637448}
+  - {fileID: 1675176071149148}
+  - {fileID: 1566671691133634}
+  - {fileID: 1362227135615546}
+  stripColours: 0000000000000000000000000000000000000000
 --- !u!114 &114740151380183456
 MonoBehaviour:
   m_ObjectHideFlags: 1
