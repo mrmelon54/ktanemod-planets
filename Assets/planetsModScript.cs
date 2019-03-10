@@ -267,7 +267,7 @@ public class planetsModScript : MonoBehaviour {
 	private string TwitchHelpMessage = @"Submit your answer with “!{0} press 1 2 3 4 delete space”.";
   private IEnumerator ProcessTwitchCommand(string command) {
     var pieces = command.ToLowerInvariant().Split(new[] { ' ' }, 2, StringSplitOptions.RemoveEmptyEntries);
-    if (pieces.Length < 2 || (pieces[0] != "submit" && pieces[0] != "press"))
+    if (pieces.Length < 2 || pieces[0] != "press")
       yield break;
 		for(int i=1;i<pieces.Length;i++) {
 			if(pieces[i]=="0") button0.OnInteract();yield return new WaitForSeconds(.1f);
