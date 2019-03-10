@@ -266,22 +266,22 @@ public class planetsModScript : MonoBehaviour {
 
 	private string TwitchHelpMessage = @"Submit your answer with “!{0} press 1 2 3 4 delete space”.";
   private IEnumerator ProcessTwitchCommand(string command) {
-    var pieces = command.ToLowerInvariant().Split(new[] { ' ' }, 2, StringSplitOptions.RemoveEmptyEntries);
+    var pieces = command.ToLowerInvariant().Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
     if (pieces.Length < 2 || pieces[0] != "press")
       yield break;
 		for(int i=1;i<pieces.Length;i++) {
-			if(pieces[i]=="0") button0.OnInteract();yield return new WaitForSeconds(.1f);
-			if(pieces[i]=="1") button1.OnInteract();yield return new WaitForSeconds(.1f);
-			if(pieces[i]=="2") button2.OnInteract();yield return new WaitForSeconds(.1f);
-			if(pieces[i]=="3") button3.OnInteract();yield return new WaitForSeconds(.1f);
-			if(pieces[i]=="4") button4.OnInteract();yield return new WaitForSeconds(.1f);
-			if(pieces[i]=="5") button5.OnInteract();yield return new WaitForSeconds(.1f);
-			if(pieces[i]=="6") button6.OnInteract();yield return new WaitForSeconds(.1f);
-			if(pieces[i]=="7") button7.OnInteract();yield return new WaitForSeconds(.1f);
-			if(pieces[i]=="8") button8.OnInteract();yield return new WaitForSeconds(.1f);
-			if(pieces[i]=="9") button9.OnInteract();yield return new WaitForSeconds(.1f);
-			if(pieces[i]=="delete") buttonBackspace.OnInteract();yield return new WaitForSeconds(.1f);
-			if(pieces[i]=="space") buttonToSpace.OnInteract();yield return new WaitForSeconds(.1f);
+			if(pieces[i]=="0") button0.OnInteract();yield return new WaitForSeconds(.01f);
+			if(pieces[i]=="1") button1.OnInteract();yield return new WaitForSeconds(.01f);
+			if(pieces[i]=="2") button2.OnInteract();yield return new WaitForSeconds(.01f);
+			if(pieces[i]=="3") button3.OnInteract();yield return new WaitForSeconds(.01f);
+			if(pieces[i]=="4") button4.OnInteract();yield return new WaitForSeconds(.01f);
+			if(pieces[i]=="5") button5.OnInteract();yield return new WaitForSeconds(.01f);
+			if(pieces[i]=="6") button6.OnInteract();yield return new WaitForSeconds(.01f);
+			if(pieces[i]=="7") button7.OnInteract();yield return new WaitForSeconds(.01f);
+			if(pieces[i]=="8") button8.OnInteract();yield return new WaitForSeconds(.01f);
+			if(pieces[i]=="9") button9.OnInteract();yield return new WaitForSeconds(.01f);
+			if(pieces[i]=="delete") buttonBackspace.OnInteract();yield return new WaitForSeconds(.01f);
+			if(pieces[i]=="space") buttonToSpace.OnInteract();yield return new WaitForSeconds(.01f);
 		}
   }
 }
