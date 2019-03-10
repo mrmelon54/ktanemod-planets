@@ -16856,8 +16856,8 @@ MonoBehaviour:
   m_Script: {fileID: -119419473, guid: 45b809be76fd7a3468b6f517bced6f28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ModuleType: planetsMod
-  ModuleDisplayName: Planets Mod
+  ModuleType: planets
+  ModuleDisplayName: Planets
   RequiresTimerVisibility: 0
 --- !u!114 &114270481279184316
 MonoBehaviour:

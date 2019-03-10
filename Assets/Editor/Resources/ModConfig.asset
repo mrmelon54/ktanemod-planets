@@ -11,15 +11,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 615501dbe4f3fe94fbf4b564abb10237, type: 3}
   m_Name: ModConfig
   m_EditorClassIdentifier: 
-  id: planetmod
-  title: Planet Mod
+  id: planets
+  title: Planets
   author: MrMelon
   description: 'Planets 1.0
 
     Why do people do this... The Milky Way shouldn''t be on a bomb!
 
 
-    Module ID: planetmod
+    Module ID: planets
 
 
     Created by: MrMelon
