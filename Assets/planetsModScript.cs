@@ -269,7 +269,7 @@ public class planetsModScript : MonoBehaviour {
     var pieces = command.ToLowerInvariant().Split(new[] { ' ' }, 2, StringSplitOptions.RemoveEmptyEntries);
     if (pieces.Length < 2 || (pieces[0] != "submit" && pieces[0] != "press"))
       yield break;
-		var buttons=[];
+		GameObject[] buttons;
 		for(int i=1;i<pieces.Length;i++) {
 			if(pieces[i]=="0") buttons.add(button0);
 			if(pieces[i]=="1") buttons.add(button1);
