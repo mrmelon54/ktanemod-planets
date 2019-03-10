@@ -264,20 +264,26 @@ public class planetsModScript : MonoBehaviour {
 
 
 
-	private string TwitchHelpMessage = @"Submit your answer with “!{0} press 1 2 3 4 space”.";
+	private string TwitchHelpMessage = @"Submit your answer with “!{0} press 1 2 3 4 delete space”.";
   private IEnumerator ProcessTwitchCommand(string command) {
     var pieces = command.ToLowerInvariant().Split(new[] { ' ' }, 2, StringSplitOptions.RemoveEmptyEntries);
     if (pieces.Length < 2 || (pieces[0] != "submit" && pieces[0] != "press"))
       yield break;
-		for(int i=0;i<pieces.Length) {
-			
+		var buttons=[];
+		for(int i=1;i<pieces.Length;i++) {
+			if(pieces[i]=="0") buttons.add(button0);
+			if(pieces[i]=="1") buttons.add(button1);
+			if(pieces[i]=="2") buttons.add(button2);
+			if(pieces[i]=="3") buttons.add(button3);
+			if(pieces[i]=="4") buttons.add(button4);
+			if(pieces[i]=="5") buttons.add(button5);
+			if(pieces[i]=="6") buttons.add(button6);
+			if(pieces[i]=="7") buttons.add(button7);
+			if(pieces[i]=="8") buttons.add(button8);
+			if(pieces[i]=="9") buttons.add(button9);
+			if(pieces[i]=="delete") buttons.add(buttonBackspace);
+			if(pieces[i]=="space") buttons.add(buttonToSpace);
 		}
-    var buttons = GetComponent<KMSelectable>().Children;
-    var buttonLabels = string.Join("", buttons.Select(button => button.GetComponentInChildren<TextMesh>().text.ToLower()).ToArray());
-    var buttonIndexes = pieces[1].Where(x => !char.IsWhiteSpace(x)).Select(x => buttonLabels.IndexOf(x)).ToList();
-    if (buttonIndexes.Any(x => x < 0))
-      yield break;
-    yield return null;
     foreach (int ix in buttonIndexes) {
       buttons[ix].OnInteract();
       yield return new WaitForSeconds(.1f);
