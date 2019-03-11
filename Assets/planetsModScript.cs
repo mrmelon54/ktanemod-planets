@@ -114,7 +114,7 @@ public class planetsModScript : MonoBehaviour {
         var numH = numG * numF;
         var numI = (stripColours[4] > 6) ? 5 : 1;
         var numJ = numH * numI;
-        answerText = (Math.Abs(numJ * numC) % 1000000).ToString().PadLeft(5, '0');
+        answerText = (Math.Abs(numJ * numC) % 1000000).ToString().PadLeft(6, '0');
         Debug.LogFormat("[Planets #{0}] Correct code: {1}", moduleId, answerText);
     }
 
@@ -127,7 +127,7 @@ public class planetsModScript : MonoBehaviour {
         }
 
         if (buttonId == 11) {
-            myText = myText.PadLeft(5, '0');
+            myText = myText.PadLeft(6, '0');
 
             if (!myText.Equals("") && answerText == myText) {
                 moduleSolved = true;
