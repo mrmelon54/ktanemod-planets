@@ -44,9 +44,21 @@ public class planetsModScript : MonoBehaviour {
 
     void Start() {
         moduleId = moduleIdCounter++;
-        planetShown=Random.Range(0, planetModels.Length-2);
+        planetShown=Random.Range(0,planetModels.Length-2);
         if(DateTime.Now.Month==4&&DateTime.Now.Day==1){
-          planetShown=Random.Range(8,9);
+          planetShown=Random.Range(8,10);
+        }
+        planetShown=2;
+        if(planetShown==2) {
+          var dayEarth=planetModels[2].transform.GetChild(0).gameObject;
+          var nightEarth=planetModels[2].transform.GetChild(2).gameObject;
+          if(DateTime.Now.Hour>7&&DateTime.Now.Hour<19) {
+            dayEarth.SetActive(true);
+            nightEarth.SetActive(false);
+          } else {
+            dayEarth.SetActive(false);
+            nightEarth.SetActive(true);
+          }
         }
         Debug.LogFormat("[Planets #{0}] Planet showing: {1}", moduleId, planetModels[planetShown].name);
 
