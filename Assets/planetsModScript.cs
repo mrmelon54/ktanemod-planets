@@ -45,9 +45,9 @@ public class planetsModScript : MonoBehaviour {
     void Start() {
         moduleId = moduleIdCounter++;
         planetShown=Random.Range(0,planetModels.Length-2);
-        //if(DateTime.Now.Month==4&&DateTime.Now.Day==1){
+        if(DateTime.Now.Month==4&&DateTime.Now.Day==1){
           planetShown=Random.Range(8,10);
-        //}
+        }
         Debug.LogFormat("[Planets #{0}] Planet showing: {1}", moduleId, planetModels[planetShown].name);
 
         for (int i = 0; i < planetModels.Length; i++) {
