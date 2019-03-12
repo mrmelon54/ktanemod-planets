@@ -114,7 +114,7 @@ public class planetsModScript : MonoBehaviour {
 
     void CalculateCorrectAnswer() {
         var planetNumber = planetShown==9?9:planetShown-1;
-        var numA = (planetShown + 1) * 123 + solvedModules * 10;
+        var numA = (planetNumber + 1) * 123 + solvedModules * 10;
         var numB = BombInfo.GetBatteryCount() * 5 + BombInfo.GetOnIndicators().Count() * 6;
         var numC = numA + numB + 4 * BombInfo.GetPortCount() + 462;
         var numD = (IntProduct(stripColours) + stripColourChangeTableOne[stripColours[0], stripColours[3]]) * stripColourChangeTableTwo[stripColours[2]] * ((stripColours[4] > 6) ? 5 : 1);
