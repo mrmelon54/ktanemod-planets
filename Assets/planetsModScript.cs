@@ -85,7 +85,7 @@ public class planetsModScript : MonoBehaviour {
     }
 
     void Update() {
-        int newSolvedModules = BombInfo.GetSolvedModuleNames().Count;
+        var newSolvedModules = BombInfo.GetSolvedModuleNames().Count;
 
         if (newSolvedModules != solvedModules) {
             solvedModules = newSolvedModules;
@@ -107,14 +107,8 @@ public class planetsModScript : MonoBehaviour {
         var numA = (planetShown + 1) * 123 + solvedModules * 10;
         var numB = BombInfo.GetBatteryCount() * 5 + BombInfo.GetOnIndicators().Count() * 6;
         var numC = numA + numB + 4 * BombInfo.GetPortCount() + 462;
-        var numD = IntProduct(stripColours);
-        var numE = stripColourChangeTableOne[stripColours[0], stripColours[3]];
-        var numF = stripColourChangeTableTwo[stripColours[2]];
-        var numG = numD + numE;
-        var numH = numG * numF;
-        var numI = (stripColours[4] > 6) ? 5 : 1;
-        var numJ = numH * numI;
-        answerText = (Math.Abs(numJ * numC) % 1000000).ToString().PadLeft(6, '0');
+        var numD = (IntProduct(stripColours) + stripColourChangeTableOne[stripColours[0], stripColours[3]]) * stripColourChangeTableTwo[stripColours[2]] * ((stripColours[4] > 6) ? 5 : 1);
+        answerText = (Math.Abs(numC * numD) % 1000000).ToString().PadLeft(6, '0');
         Debug.LogFormat("[Planets #{0}] Correct code: {1}", moduleId, answerText);
     }
 
