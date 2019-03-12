@@ -52,13 +52,13 @@ public class planetsModScript : MonoBehaviour {
         if(planetShown==2) {
           var dayEarth=planetModels[2].transform.GetChild(0).gameObject;
           var nightEarth=planetModels[2].transform.GetChild(2).gameObject;
-          if(DateTime.Now.Hour>7&&DateTime.Now.Hour<19) {
+          /*if(DateTime.Now.Hour>7&&DateTime.Now.Hour<19) {
             dayEarth.SetActive(true);
             nightEarth.SetActive(false);
-          } else {
+          } else {*/
             dayEarth.SetActive(false);
             nightEarth.SetActive(true);
-          }
+          //}
         }
         Debug.LogFormat("[Planets #{0}] Planet showing: {1}", moduleId, planetModels[planetShown].name);
 
