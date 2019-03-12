@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4065181925865808}
   - component: {fileID: 33513945103544702}
-  - component: {fileID: 135851773997066942}
   - component: {fileID: 23030476106029740}
   - component: {fileID: 114577562327866620}
   m_Layer: 0
@@ -126,15 +125,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShaderNames:
   - KT/Mobile/DiffuseTint
---- !u!135 &135851773997066942
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1508245812495596}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
