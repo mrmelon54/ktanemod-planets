@@ -113,6 +113,7 @@ public class planetsModScript : MonoBehaviour {
     }
 
     void CalculateCorrectAnswer() {
+        var planetNumber = planetShown==9?9:planetShown-1;
         var numA = (planetShown + 1) * 123 + solvedModules * 10;
         var numB = BombInfo.GetBatteryCount() * 5 + BombInfo.GetOnIndicators().Count() * 6;
         var numC = numA + numB + 4 * BombInfo.GetPortCount() + 462;
@@ -168,7 +169,7 @@ public class planetsModScript : MonoBehaviour {
 
     #pragma warning disable 414
     private readonly string TwitchHelpMessage = @"Submit your answer with “!{0} press 1 2 3 4 delete space”.";
-#pragma warning restore 414
+    #pragma warning restore 414
 
     KMSelectable[] ProcessTwitchCommand(string command) {
         command = command.ToLowerInvariant().Trim();
