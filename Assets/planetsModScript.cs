@@ -180,10 +180,15 @@ public class planetsModScript : MonoBehaviour {
             var pressList = new List<KMSelectable>();
 
             for (int i = 0; i < presses.Length; i++) {
-                if (Regex.IsMatch(presses[i], @"^[0-9]$")) {
-                    pressList.Add(ModuleButtons[int.Parse(presses[i].ToString())]);
-                } else if (Regex.IsMatch(presses[i], @"^(delete|space)$")) {
+                if (Regex.IsMatch(presses[i], @"^(delete|space)$")) {
                     pressList.Add(ModuleButtons[(presses[i].Equals("delete")) ? 10 : 11]);
+                } else {
+                    String numpadPresses=presses[i];
+                    for(int j=0;j<numpadPresses.Length;j++) {
+                        if(Regex.IsMatch(numpadPresses[j].ToString(),@"^[0-9]$")) {
+                            pressList.Add(ModuleButtons[int.Parse(numpadPresses[j].ToString())]);
+                        }
+                    }
                 }
             }
 
