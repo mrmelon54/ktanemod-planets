@@ -1,7 +1,15 @@
 Version 2.0
   - Added live day/night Earth modes based on the time
 
+Version 1.3
+  - Changed both moduleID and modID to 'planets'
+
+Version 1.2
+  - Bug fixes
+
+Version 1.1
+  - Bug fixes
+
 Version 1.0
   - Initial release
   - Added Twitch Plays support
-  - Changed both moduleID and modID to 'planets'
