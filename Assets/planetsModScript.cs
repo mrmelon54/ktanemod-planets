@@ -168,7 +168,7 @@ public class planetsModScript : MonoBehaviour {
     }
 
     #pragma warning disable 414
-    private readonly string TwitchHelpMessage = @"Submit your answer with “!{0} press 1 2 3 4 delete space”.";
+    private readonly string TwitchHelpMessage = @"Submit your answer with “!{0} press 1234 delete space”.";
     #pragma warning restore 414
 
     KMSelectable[] ProcessTwitchCommand(string command) {
