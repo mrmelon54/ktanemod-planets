@@ -113,7 +113,7 @@ public class planetsModScript : MonoBehaviour {
     }
 
     void CalculateCorrectAnswer() {
-        var planetNumber = planetShown==9?9:planetShown-1;
+        var planetNumber = planetShown>8?9:planetShown+1;
         var numA = (planetNumber + 1) * 123 + solvedModules * 10;
         var numB = BombInfo.GetBatteryCount() * 5 + BombInfo.GetOnIndicators().Count() * 6;
         var numC = numA + numB + 4 * BombInfo.GetPortCount() + 462;
