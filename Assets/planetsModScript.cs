@@ -44,10 +44,12 @@ public class planetsModScript : MonoBehaviour {
 
     void Start() {
         moduleId = moduleIdCounter++;
-        planetShown=Random.Range(0,planetModels.Length-2);
-        if(DateTime.Now.Month==4&&DateTime.Now.Day==1){
-          planetShown=Random.Range(8,10);
+        planetShown = Random.Range(0, planetModels.Length - 2);
+
+        if(DateTime.Now.Month == 4 && DateTime.Now.Day == 1){
+            planetShown=Random.Range(8, 10);
         }
+
         Debug.LogFormat("[Planets #{0}] Planet showing: {1}", moduleId, planetModels[planetShown].name);
 
         for (int i = 0; i < planetModels.Length; i++) {
@@ -89,16 +91,18 @@ public class planetsModScript : MonoBehaviour {
             solvedModules = newSolvedModules;
             CalculateCorrectAnswer();
         }
-        if(planetShown==2) {
-          var dayEarth=planetModels[2].transform.GetChild(0).gameObject;
-          var nightEarth=planetModels[2].transform.GetChild(2).gameObject;
-          if(DateTime.Now.Hour>5&&DateTime.Now.Hour<19) {
-            dayEarth.SetActive(true);
-            nightEarth.SetActive(false);
-          } else {
-            dayEarth.SetActive(false);
-            nightEarth.SetActive(true);
-          }
+
+        if (planetShown == 2) {
+            var dayEarth = planetModels[2].transform.GetChild(0).gameObject;
+            var nightEarth = planetModels[2].transform.GetChild(2).gameObject;
+
+            if(DateTime.Now.Hour > 5 && DateTime.Now.Hour < 19) {
+                dayEarth.SetActive(true);
+                nightEarth.SetActive(false);
+            } else {
+                dayEarth.SetActive(false);
+                nightEarth.SetActive(true);
+            }
         }
     }
 
@@ -113,12 +117,16 @@ public class planetsModScript : MonoBehaviour {
     }
 
     void CalculateCorrectAnswer() {
-        var planetNumber = planetShown>8?9:planetShown+1;
+        var planetNumber = planetShown > 8 ? 9 : planetShown + 1;
         var numA = (planetNumber + 1) * 123 + solvedModules * 10;
         var numB = BombInfo.GetBatteryCount() * 5 + BombInfo.GetOnIndicators().Count() * 6;
         var numC = numA + numB + 4 * BombInfo.GetPortCount() + 462;
         var numD = (IntProduct(stripColours) + stripColourChangeTableOne[stripColours[0], stripColours[3]]) * stripColourChangeTableTwo[stripColours[2]] * ((stripColours[4] > 6) ? 5 : 1);
         answerText = (Math.Abs(numC * numD) % 1000000).ToString().PadLeft(6, '0');
+        Debug.LogFormat("[Planets #{0}] Num A: {1}", moduleId, numA);
+        Debug.LogFormat("[Planets #{0}] Num B: {1}", moduleId, numB);
+        Debug.LogFormat("[Planets #{0}] Num C: {1}", moduleId, numC);
+        Debug.LogFormat("[Planets #{0}] Num D: {1}", moduleId, numD);
         Debug.LogFormat("[Planets #{0}] Correct code: {1}", moduleId, answerText);
     }
 
@@ -183,9 +191,10 @@ public class planetsModScript : MonoBehaviour {
                 if (Regex.IsMatch(presses[i], @"^(delete|space)$")) {
                     pressList.Add(ModuleButtons[(presses[i].Equals("delete")) ? 10 : 11]);
                 } else {
-                    String numpadPresses=presses[i];
-                    for(int j=0;j<numpadPresses.Length;j++) {
-                        if(Regex.IsMatch(numpadPresses[j].ToString(),@"^[0-9]$")) {
+                    string numpadPresses = presses[i];
+
+                    for (int j = 0; j < numpadPresses.Length; j++) {
+                        if (Regex.IsMatch(numpadPresses[j].ToString(), @"^[0-9]$")) {
                             pressList.Add(ModuleButtons[int.Parse(numpadPresses[j].ToString())]);
                         }
                     }
