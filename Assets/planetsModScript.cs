@@ -46,7 +46,7 @@ public class planetsModScript : MonoBehaviour {
         moduleId = moduleIdCounter++;
         planetShown = Random.Range(0, planetModels.Length - 2);
 
-        if(DateTime.Now.Month == 4 && DateTime.Now.Day == 1){
+        if (DateTime.Now.Month == 4 && DateTime.Now.Day == 1) {
             planetShown=Random.Range(8, 10);
         }
 
@@ -117,12 +117,13 @@ public class planetsModScript : MonoBehaviour {
     }
 
     void CalculateCorrectAnswer() {
-        var planetNumber = planetShown > 8 ? 9 : planetShown + 1;
-        var numA = (planetNumber + 1) * 123 + solvedModules * 10;
+        var planetNumber = (planetShown > 8) ? 9 : planetShown + 1;
+        var numA = planetNumber * 123 + solvedModules * 10;
         var numB = BombInfo.GetBatteryCount() * 5 + BombInfo.GetOnIndicators().Count() * 6;
         var numC = numA + numB + 4 * BombInfo.GetPortCount() + 462;
         var numD = (IntProduct(stripColours) + stripColourChangeTableOne[stripColours[0], stripColours[3]]) * stripColourChangeTableTwo[stripColours[2]] * ((stripColours[4] > 6) ? 5 : 1);
         answerText = (Math.Abs(numC * numD) % 1000000).ToString().PadLeft(6, '0');
+        Debug.LogFormat("[Planets #{0}] Planet number: {1}", moduleId, planetNumber);
         Debug.LogFormat("[Planets #{0}] Num A: {1}", moduleId, numA);
         Debug.LogFormat("[Planets #{0}] Num B: {1}", moduleId, numB);
         Debug.LogFormat("[Planets #{0}] Num C: {1}", moduleId, numC);
