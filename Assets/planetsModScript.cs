@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -17,6 +18,7 @@ public class planetsModScript : MonoBehaviour {
     public GameObject[] planetModels;
     public GameObject planetIcon;
     public GameObject[] stripLights;
+    public GameObject OpeningControl;
 
     int planetShown;
     string myText = "";
@@ -47,7 +49,7 @@ public class planetsModScript : MonoBehaviour {
         planetShown = Random.Range(0, planetModels.Length - 2);
 
         if (DateTime.Now.Month == 4 && DateTime.Now.Day == 1) {
-            planetShown=Random.Range(8, 10);
+            planetShown = Random.Range(8, 10);
         }
 
         Debug.LogFormat("[Planets #{0}] Planet showing: {1}", moduleId, planetModels[planetShown].name);
@@ -57,6 +59,8 @@ public class planetsModScript : MonoBehaviour {
         }
 
         planetModels[planetShown].SetActive(true);
+        OpeningControl.transform.localScale = new Vector3(0.0f, 1.0f, 1.0f);
+        OpeningControl.SetActive(false);
 
         for (int i = 0; i < stripColours.Length; i++) {
             stripColours[i] = Random.Range(0, 9);
@@ -85,11 +89,13 @@ public class planetsModScript : MonoBehaviour {
     }
 
     void Update() {
-        var newSolvedModules = BombInfo.GetSolvedModuleNames().Count;
+        if (!moduleSolved) {
+            var newSolvedModules = BombInfo.GetSolvedModuleNames().Count;
 
-        if (newSolvedModules != solvedModules) {
-            solvedModules = newSolvedModules;
-            CalculateCorrectAnswer();
+            if (newSolvedModules != solvedModules) {
+                solvedModules = newSolvedModules;
+                CalculateCorrectAnswer();
+            }
         }
 
         if (planetShown == 2) {
@@ -148,6 +154,7 @@ public class planetsModScript : MonoBehaviour {
                 RenderScreen();
                 Debug.LogFormat("[Planets #{0}] Module solved.", moduleId);
                 BombModule.HandlePass();
+                StartCoroutine(EndAnimation());
             } else {
                 Debug.LogFormat("[Planets #{0}] Strike! The PIN {1} is incorrect.", moduleId, myText);
                 myText = "";
@@ -176,9 +183,28 @@ public class planetsModScript : MonoBehaviour {
         }
     }
 
-    #pragma warning disable 414
+    IEnumerator EndAnimation() {
+        OpeningControl.SetActive(true);
+
+        for (int i = 0; i < 60; i++) {
+            var scaleX = OpeningControl.transform.localScale.x;
+            OpeningControl.transform.localScale = new Vector3(scaleX + 1.0f / 60, 1.0f, 1.0f);
+
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(0.3f);
+
+        for (int i = 0; i < 20; i++) {
+            planetModels[planetShown].transform.Translate(0.0f, -0.0025f, 0.0f);
+
+            yield return null;
+        }
+    }
+
+#pragma warning disable 414
     private readonly string TwitchHelpMessage = @"Submit your answer with “!{0} press 1234 delete space”.";
-    #pragma warning restore 414
+#pragma warning restore 414
 
     KMSelectable[] ProcessTwitchCommand(string command) {
         command = command.ToLowerInvariant().Trim();
