@@ -1,3 +1,8 @@
+Version 2.4
+  - Planet sinks into the module after solving it
+  - The strip lights go off after solving it
+  - Changed black light to off light as they are the same thing
+
 Version 2.3
   - Fixed bug in calculations
 
