@@ -63,7 +63,7 @@ public class planetsModScript : MonoBehaviour {
             stripColours[i] = Random.Range(0, 9);
         }
 
-        var stripCol = new[] { "Aqua", "Blue", "Green", "Lime", "Orange", "Red", "Yellow", "White", "Black" };
+        var stripCol = new[] { "Aqua", "Blue", "Green", "Lime", "Orange", "Red", "Yellow", "White", "Off" };
         Debug.LogFormat("[Planets #{0}] Strip Lights showing: {1}", moduleId, stripColours.Select(x => stripCol[x]).Join(", "));
 
         for (int i = 0; i < stripLights.Length; i++) {
