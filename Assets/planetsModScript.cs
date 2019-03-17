@@ -18,7 +18,6 @@ public class planetsModScript : MonoBehaviour {
     public GameObject[] planetModels;
     public GameObject planetIcon;
     public GameObject[] stripLights;
-    public GameObject OpeningControl;
 
     int planetShown;
     string myText = "";
@@ -59,8 +58,6 @@ public class planetsModScript : MonoBehaviour {
         }
 
         planetModels[planetShown].SetActive(true);
-        OpeningControl.transform.localScale = new Vector3(0.0f, 1.0f, 1.0f);
-        OpeningControl.SetActive(false);
 
         for (int i = 0; i < stripColours.Length; i++) {
             stripColours[i] = Random.Range(0, 9);
@@ -184,21 +181,15 @@ public class planetsModScript : MonoBehaviour {
     }
 
     IEnumerator EndAnimation() {
-        OpeningControl.SetActive(true);
-
-        for (int i = 0; i < 60; i++) {
-            var scaleX = OpeningControl.transform.localScale.x;
-            OpeningControl.transform.localScale = new Vector3(scaleX + 1.0f / 60, 1.0f, 1.0f);
-
+        for (int i = 0; i < 100; i++) {
+            planetModels[planetShown].transform.Translate(0.0f, -0.0005f, 0.0f);
             yield return null;
         }
-
-        yield return new WaitForSeconds(0.3f);
-
-        for (int i = 0; i < 20; i++) {
-            planetModels[planetShown].transform.Translate(0.0f, -0.0025f, 0.0f);
-
-            yield return null;
+        for (int i=0;i<stripLights.Length;i++) {
+            for (int j = 0; j < stripLights[i].transform.childCount; j++) {
+                stripLights[i].transform.GetChild(j).gameObject.SetActive((stripLights[i].transform.childCount-1 == j));
+                yield return null;
+            }
         }
     }
 
