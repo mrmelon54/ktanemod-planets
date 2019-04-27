@@ -123,8 +123,8 @@ public class planetsModScript : MonoBehaviour {
         var planetNumber = (planetShown > 8) ? 9 : planetShown + 1;
         var numA = planetNumber * 123 + solvedModules * 10;
         var numB = BombInfo.GetBatteryCount() * 5 + BombInfo.GetOnIndicators().Count() * 6;
-        var numC = numA + numB + 4 * BombInfo.GetPortCount() + 462;
-        var numD = (IntProduct(stripColours) + stripColourChangeTableOne[stripColours[0], stripColours[3]]) * stripColourChangeTableTwo[stripColours[2]] * ((stripColours[4] > 6) ? 5 : 1);
+        var numC = (numA + numB + 4 * BombInfo.GetPortCount() + 462)%1000;
+        var numD = ((IntProduct(stripColours) + stripColourChangeTableOne[stripColours[0], stripColours[3]]) * stripColourChangeTableTwo[stripColours[2]] * ((stripColours[4] > 6) ? 5 : 1))%1000;
         answerText = (Math.Abs(numC * numD) % 1000000).ToString().PadLeft(6, '0');
         Debug.LogFormat("[Planets #{0}] Planet number: {1}", moduleId, planetNumber);
         Debug.LogFormat("[Planets #{0}] Num A: {1}", moduleId, numA);
