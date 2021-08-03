@@ -77,7 +77,7 @@ public class planetsModScript : MonoBehaviour {
         for (int i = 0; i < ModuleButtons.Length; i++) {
             int j = i;
 
-            ModuleButtons[i].OnInteract += delegate() {
+            ModuleButtons[i].OnInteract += delegate () {
                 PressButton(j);
 
                 return false;
@@ -99,7 +99,7 @@ public class planetsModScript : MonoBehaviour {
             var dayEarth = planetModels[2].transform.GetChild(0).gameObject;
             var nightEarth = planetModels[2].transform.GetChild(2).gameObject;
 
-            if(DateTime.Now.Hour > 5 && DateTime.Now.Hour < 19) {
+            if (DateTime.Now.Hour > 5 && DateTime.Now.Hour < 19) {
                 dayEarth.SetActive(true);
                 nightEarth.SetActive(false);
             } else {
@@ -123,8 +123,8 @@ public class planetsModScript : MonoBehaviour {
         var planetNumber = (planetShown > 8) ? 9 : planetShown + 1;
         var numA = planetNumber * 123 + solvedModules * 10;
         var numB = BombInfo.GetBatteryCount() * 5 + BombInfo.GetOnIndicators().Count() * 6;
-        var numC = (numA + numB + 4 * BombInfo.GetPortCount() + 462)%1000;
-        var numD = ((IntProduct(stripColours) + stripColourChangeTableOne[stripColours[0], stripColours[3]]) * stripColourChangeTableTwo[stripColours[2]] * ((stripColours[4] > 6) ? 5 : 1))%1000;
+        var numC = (numA + numB + 4 * BombInfo.GetPortCount() + 462) % 1000;
+        var numD = ((IntProduct(stripColours) + stripColourChangeTableOne[stripColours[0], stripColours[3]]) * stripColourChangeTableTwo[stripColours[2]] * ((stripColours[4] > 6) ? 5 : 1)) % 1000;
         answerText = (Math.Abs(numC * numD) % 1000000).ToString().PadLeft(6, '0');
         Debug.LogFormat("[Planets #{0}] Planet number: {1}", moduleId, planetNumber);
         Debug.LogFormat("[Planets #{0}] Num A: {1}", moduleId, numA);
@@ -181,13 +181,15 @@ public class planetsModScript : MonoBehaviour {
     }
 
     IEnumerator EndAnimation() {
+        Transform planetTransform = planetIcon.transform;
         for (int i = 0; i < 100; i++) {
-            planetModels[planetShown].transform.Translate(0.0f, -0.0005f, 0.0f);
+            planetTransform.localPosition = new Vector3(planetTransform.localPosition.x, planetTransform.localPosition.y - 0.00044f, planetTransform.localPosition.z);
             yield return null;
         }
-        for (int i=0;i<stripLights.Length;i++) {
+        planetIcon.SetActive(false);
+        for (int i = 0; i < stripLights.Length; i++) {
             for (int j = 0; j < stripLights[i].transform.childCount; j++) {
-                stripLights[i].transform.GetChild(j).gameObject.SetActive((stripLights[i].transform.childCount-1 == j));
+                stripLights[i].transform.GetChild(j).gameObject.SetActive((stripLights[i].transform.childCount - 1 == j));
                 yield return null;
             }
         }

@@ -7,15 +7,21 @@ ModelImporter:
     100002: Component_PuzzleBackground
     100004: Lamp
     100006: //RootNode
+    100008: Component_PuzzleBackground.001
     400000: Camera
     400002: Component_PuzzleBackground
     400004: Lamp
     400006: //RootNode
+    400008: Component_PuzzleBackground.001
     2000000: Camera
     2100000: Component_PuzzleBack_mat
+    2100002: Component_PuzzleBack_mat.001
     2300000: Component_PuzzleBackground
+    2300002: Component_PuzzleBackground.001
     3300000: Component_PuzzleBackground
+    3300002: Component_PuzzleBackground.001
     4300000: Component_PuzzleBackground
+    4300002: Component_PuzzleBackground.001
     10800000: Lamp
   externalObjects:
   - first:
