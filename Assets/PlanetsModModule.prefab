@@ -2106,6 +2106,7 @@ GameObject:
   - component: {fileID: 4370215888346058}
   - component: {fileID: 114936541366020078}
   - component: {fileID: 114552120536617164}
+  - component: {fileID: 114731839788667914}
   - component: {fileID: 114267992943992864}
   - component: {fileID: 114501452920504154}
   - component: {fileID: 114734303563771194}
@@ -2703,7 +2704,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1804188959636080}
-  m_LocalRotation: {x: -0.7660445, y: 0, z: 0, w: 0.64278764}
+  m_LocalRotation: {x: 0.76604444, y: 0, z: 0, w: 0.64278764}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 80, y: 80, z: 80}
   m_Children:
@@ -2711,7 +2712,7 @@ Transform:
   - {fileID: 4272460159465218}
   m_Father: {fileID: 4940564011098510}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: -100, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 100, y: 0, z: 0}
 --- !u!4 &4300275677028780
 Transform:
   m_ObjectHideFlags: 1
@@ -9538,6 +9539,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShaderNames:
   - Standard
+--- !u!114 &114731839788667914
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1980496988126644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adf69c2de51bd3c43bbd9bc22578ee08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _seed: 3
 --- !u!114 &114734303563771194
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9551,6 +9564,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BombAudio: {fileID: 114936541366020078}
   BombInfo: {fileID: 114552120536617164}
+  Ruleseed: {fileID: 114731839788667914}
   BombModule: {fileID: 114267992943992864}
   ModuleButtons:
   - {fileID: 114417991934319354}

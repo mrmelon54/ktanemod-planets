@@ -11,6 +11,7 @@ using Random = UnityEngine.Random;
 public class planetsModScript : MonoBehaviour {
     public KMAudio BombAudio;
     public KMBombInfo BombInfo;
+    public KMRuleSeedable Ruleseed;
     public KMBombModule BombModule;
     public KMSelectable[] ModuleButtons;
     public KMSelectable ModuleSelect;
@@ -34,6 +35,8 @@ public class planetsModScript : MonoBehaviour {
         { -1, 8, 3, 8, 6, -2, 4, 4, 8 },
         { -2, 9, -3, -6, -4, 2, 4, -3, -1 }
     };
+    int prod1 = 21;
+    int prod2 = 22;
 
     readonly int[] stripColourChangeTableTwo = { 89, 30, 41, 97, 49, 63, 60, 3, 74 };
     int solvedModules;
@@ -46,6 +49,7 @@ public class planetsModScript : MonoBehaviour {
     void Start() {
         moduleId = moduleIdCounter++;
         planetShown = Random.Range(0, planetModels.Length - 2);
+        SetRS();
 
         if (DateTime.Now.Month == 4 && DateTime.Now.Day == 1) {
             planetShown = Random.Range(8, 10);
@@ -84,7 +88,16 @@ public class planetsModScript : MonoBehaviour {
             };
         }
     }
-
+    void SetRS()
+    {
+        MonoRandom rnd = Ruleseed.GetRNG();
+        if (rnd.Seed != 1)
+        {
+            prod1 = rnd.Next(11, 32);
+            prod2 = rnd.Next(11, 32);
+        }
+        Debug.LogFormat("[Planets #{0}] \"Add {1} multiplied by {2}\" - Albert Einstein", moduleId, prod1, prod2);
+    }
     void Update() {
         if (!moduleSolved) {
             var newSolvedModules = BombInfo.GetSolvedModuleNames().Count;
@@ -123,7 +136,7 @@ public class planetsModScript : MonoBehaviour {
         var planetNumber = (planetShown > 8) ? 9 : planetShown + 1;
         var numA = planetNumber * 123 + solvedModules * 10;
         var numB = BombInfo.GetBatteryCount() * 5 + BombInfo.GetOnIndicators().Count() * 6;
-        var numC = (numA + numB + 4 * BombInfo.GetPortCount() + 462) % 1000;
+        var numC = (numA + numB + 4 * BombInfo.GetPortCount() + (prod1 * prod2)) % 1000;
         var numD = ((IntProduct(stripColours) + stripColourChangeTableOne[stripColours[0], stripColours[3]]) * stripColourChangeTableTwo[stripColours[2]] * ((stripColours[4] > 6) ? 5 : 1)) % 1000;
         answerText = (Math.Abs(numC * numD) % 1000000).ToString().PadLeft(6, '0');
         Debug.LogFormat("[Planets #{0}] Planet number: {1}", moduleId, planetNumber);
