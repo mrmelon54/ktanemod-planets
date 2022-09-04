@@ -1,3 +1,6 @@
+Version 4.1
+  - Ruleseed (thanks TandyCake)
+
 Version 4.0
   - Fixed planet floating out the other side of the bomb casing
   - Fixed saturn rings to be a circle model
