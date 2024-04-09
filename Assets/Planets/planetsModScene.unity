@@ -245,6 +245,16 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.x
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 23195446265215254, guid: 9a90a4c8416b16446bbc3d9585e7a663,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b38361be06504b44bb79b810fa375c54, type: 3}
+    - target: {fileID: 33609826136161574, guid: 9a90a4c8416b16446bbc3d9585e7a663,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300098, guid: b38361be06504b44bb79b810fa375c54, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9a90a4c8416b16446bbc3d9585e7a663, type: 2}
   m_IsPrefabParent: 0
@@ -286,6 +296,15 @@ Prefab:
     - target: {fileID: 439642, guid: 8814ea52310d2614a9feda02ec355ae4, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114796497321298408, guid: 8814ea52310d2614a9feda02ec355ae4,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1692417196144518, guid: 8814ea52310d2614a9feda02ec355ae4, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8814ea52310d2614a9feda02ec355ae4, type: 2}

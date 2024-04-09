@@ -1,0 +1,10 @@
+{
+  "name": "planets-Editor",
+  "references": [
+    "planets"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "excludePlatforms": []
+}
